@@ -7,6 +7,13 @@
   www.ros.org/wiki/octomap_server for details  
 -->
 <launch>
+	
+	scan_to_cloud_converter scan_to_cloud_converter_node
+	<node pkg="scan_to_cloud_converter" type="scan_to_cloud_converter_node" name="scan_to_pointcloud2" >
+		<remap from="/scan" to="/scan" />
+		<remap from="/cloud" to="/cloudpoint2" />
+	</node>
+
 	<node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
 		<param name="resolution" value="0.05" />
 		
@@ -14,15 +21,11 @@
 		<param name="frame_id" type="string" value="world" />
 		
 		<!-- maximum range to integrate (speedup!) -->
-		<!-- <param name="sensor_model/max_range" value="20.0" /> -->
-		<!-- <remap from="cloud_in" to="/camera/depth/points" /> -->
-
+		<param name="sensor_model/max_range" value="20.0" />
 		
 		<!-- data source to integrate (PointCloud2) -->
 		<!-- <remap from="cloud_in" to="/narrow_stereo/points_filtered2" /> -->
-
-		<param name="sensor_model/max_range" value="100.0" />
-		<remap from="cloud_in" to="/velodyne_points" />
+		<remap from="cloud_in" to="cloudpoint2" />
 	
 	</node>
 
