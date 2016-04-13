@@ -17,12 +17,13 @@
 		<!-- <param name="sensor_model/max_range" value="20.0" /> -->
 		<!-- <remap from="cloud_in" to="/camera/depth/points" /> -->
 
-		
-		<!-- data source to integrate (PointCloud2) -->
-		<!-- <remap from="cloud_in" to="/narrow_stereo/points_filtered2" /> -->
-
 		<param name="sensor_model/max_range" value="100.0" />
 		<remap from="cloud_in" to="/velodyne_points" />
+
+		
+		<!-- data source to integrate (PointCloud2) -->
+<!-- 		<param name="sensor_model/max_range" value="100.0" />
+		<remap from="cloud_in" to="/velodyne_points" /> -->
 	
 	</node>
 
